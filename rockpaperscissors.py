@@ -1,5 +1,6 @@
 
 from random import randint
+from random import choice
 
 def play_verifier(play):
     """this function is so the player can enter more than one possible
@@ -19,29 +20,66 @@ def play_verifier(play):
             play = "Scissors"
 
         else:
-            play = input("Bad entry, bucko. R, P, S?")
+            play = input("Don't mess with me. R, P, S?")
 
     player = play
     return player, hand
 
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-
-
+score = 0
+comments = ["Interesting choice.",
+            "Why would you do that?",
+            "Do you like that move?",
+            "Are you proud of that choice?"]
+crowd = ["BOOOOOOOOO!",
+         "Yeeeeaaaaahhhhhhhh",
+         "Lukewarm"]
 computer = hand[randint(0,2)]
 
 player = False
 
 while player == False:
-    player = input("Rock, Paper, Scissors?").lower()
+    player = input("Rock, Paper, Scissors? ")
+    player = play_verifier(player)
 
-    if player in names:
+    print("You chose: {}. {}".format(player.upper(), choice(comments)))
+    print("Computer chose: {}.".format(computer.upper()))
 
+    if player == computer:
+        print("Curious. Why did you choose the same thing?".format(computer))
 
-        if player == computer:
-            print("Computer played {}. Curious. Why did you choose the same thing?".computer)
-        elif player
+    elif player == "Rock":
+        if computer == "Paper":
+            print("You lose. Computer wraps you up tight.")
+            score -= 1
+        else:
+            print("You win! You smash computer. Ow.")
+            score += 1
 
-    else player = input("Bad entry, bucko. R, P, S?")
+    elif player == "Paper":
+        if computer == "Scissors":
+            print("You lose. Computer cuts you.")
+            score -= 1
+        else:
+            print("You win! You cover computer. Go work out.")
+            score += 1
 
-    player = False
-    computer = hand[randint(0,2)]
+    elif player == "Scissors":
+        if computer == "Rock":
+            print("You lose. Computer smashes you.")
+            score -= 1
+        else:
+            print("You win! You cut computer.")
+            score += 1
+
+    print("SCORE: ", score)
+
+    continue = input("Play again? ")
+
+    if continue.lower()[0] == "y":
+        player = False
+        computer = hand[randint(0,2)]
+
+    else:
+        print("Okay. See you again.")
