@@ -8,26 +8,20 @@ def play_verifier(play):
     cleanest of data entries. Would you call this an elegant solution?
     For a noob, at least."""
 
-    hand = ["Rock", "Paper", "Scissors"]
-
-    while play not in hand:
-
-        if play.lower()[0] == "r" or play[0] == 1:
-            play = "Rock"
-        elif play.lower()[0] == "p" or play[0] == 2:
-            play = "Paper"
-        elif play.lower()[0] == "s" or play[0] == 3:
-            play = "Scissors"
-
-        else:
-            play = input("Don't mess with me. R, P, S?")
+    if play.lower()[0] == "r" or play[0] == 1:
+        play = "Rock"
+    elif play.lower()[0] == "p" or play[0] == 2:
+        play = "Paper"
+    elif play.lower()[0] == "s" or play[0] == 3:
+        play = "Scissors"
 
     player = play
-    return player, hand
+    return player
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 score = 0
+hand = ["Rock", "Paper", "Scissors"]
 comments = ["Interesting choice.",
             "Why would you do that?",
             "Do you like that move?",
@@ -35,13 +29,18 @@ comments = ["Interesting choice.",
 crowd = ["BOOOOOOOOO!",
          "Yeeeeaaaaahhhhhhhh",
          "Lukewarm"]
-computer = hand[randint(0,2)]
 
 player = False
 
 while player == False:
+    computer = hand[randint(0,2)]
     player = input("Rock, Paper, Scissors? ")
-    player = play_verifier(player)
+
+    while player not in hand:
+        player = play_verifier(player)
+        while player not in hand:
+            player = input("Don't mess with me. R, P, S? ")
+            player = play_verifier(player)
 
     print("You chose: {}. {}".format(player.upper(), choice(comments)))
     print("Computer chose: {}.".format(computer.upper()))
@@ -75,11 +74,10 @@ while player == False:
 
     print("SCORE: ", score)
 
-    continue = input("Play again? ")
+    yallah_tani = input("Play again? ")
 
-    if continue.lower()[0] == "y":
+    while yallah_tani.lower()[0] == "y":
         player = False
-        computer = hand[randint(0,2)]
 
     else:
         print("Okay. See you again.")
