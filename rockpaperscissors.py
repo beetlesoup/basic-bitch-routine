@@ -6,19 +6,26 @@ def play_verifier(play):
     value, and the programmer can act like they only recieve the
     cleanest of data entries. Would you call this an elegant solution?
     For a noob, at least."""
-    
-    if player.lower()[0] == "r" or "1":
-        player = "Rock"
-    elif player.lower()[0] == "p" or "2":
-        player = "Paper"
-    elif player.lower()[0] == "s" or "3":
-        player = "Scissors"
 
-    return player
+    hand = ["Rock", "Paper", "Scissors"]
+
+    while play not in hand:
+
+        if play.lower()[0] == "r" or play[0] == 1:
+            play = "Rock"
+        elif play.lower()[0] == "p" or play[0] == 2:
+            play = "Paper"
+        elif play.lower()[0] == "s" or play[0] == 3:
+            play = "Scissors"
+
+        else:
+            play = input("Bad entry, bucko. R, P, S?")
+
+    player = play
+    return player, hand
 
 
 
-hand = ["Rock", "Paper", "Scissors"]
 
 computer = hand[randint(0,2)]
 
