@@ -76,7 +76,7 @@ while player == False:
 
     yallah_tani = input("Play again? ")
 
-    while yallah_tani.lower()[0] == "y":
+    if yallah_tani.lower()[0] == "y":
         player = False
 
     else:
