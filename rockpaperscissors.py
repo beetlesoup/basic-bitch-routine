@@ -52,31 +52,37 @@ while player == False:
         if computer == "Paper":
             print("You lose. Computer wraps you up tight.")
             score -= 1
+            print("crowd response: ", crowd)
         else:
             print("You win! You smash computer. Ow.")
             score += 1
+            print("crowd response: ", crowd)
 
     elif player == "Paper":
         if computer == "Scissors":
             print("You lose. Computer cuts you.")
             score -= 1
+            print("crowd response: ", crowd)
         else:
             print("You win! You cover computer. Go work out.")
             score += 1
+            print("crowd response: ", crowd)
 
     elif player == "Scissors":
         if computer == "Rock":
             print("You lose. Computer smashes you.")
             score -= 1
+            print("crowd response: ", crowd)
         else:
             print("You win! You cut computer.")
             score += 1
+            print("crowd response: ", crowd)
 
     print("SCORE: ", score)
 
-    yallah_tani = input("Play again? ")
+    yallah_tani = input("Play again? y or n")
 
-    if yallah_tani.lower()[0] == "y":
+    if yallah_tani == "y":
         player = False
 
     else:
